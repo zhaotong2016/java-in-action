@@ -9,7 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>user-service</artifactId>
+    <artifactId>account-service</artifactId>
+
+
+    <description>账号服务</description>
     <build>
         <plugins>
             <plugin>

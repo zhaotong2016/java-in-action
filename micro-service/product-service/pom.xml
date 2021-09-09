@@ -11,5 +11,6 @@
 
     <artifactId>product-service</artifactId>
 
+    <description>产品服务</description>
 
 </project>

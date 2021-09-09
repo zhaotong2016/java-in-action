@@ -59,13 +59,7 @@
             <scope>import</scope>
         </dependency>
 
-        <!--注册中心-->
-         <dependency>
-             <groupId>org.springframework.cloud</groupId>
-             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-             <version>${eureka.version}</version>
-         </dependency>
-
+       
 
         <dependency>
             <groupId>mysql</groupId>

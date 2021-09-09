@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //@EnableDiscoveryClient
 @SpringBootApplication
-public class UserApplication implements CommandLineRunner {
+public class AccountApplication implements CommandLineRunner {
 
 
     @Autowired
@@ -17,7 +17,7 @@ public class UserApplication implements CommandLineRunner {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(UserApplication.class, args);
+        SpringApplication.run(AccountApplication.class, args);
 
     }
 

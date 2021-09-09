@@ -8,7 +8,6 @@ import java.lang.annotation.*;
 /**
  * 自定义 Component "派生性"注解
  *
- *
  * @since
  */
 @Target({ElementType.TYPE})

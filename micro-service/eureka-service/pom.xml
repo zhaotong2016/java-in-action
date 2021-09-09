@@ -11,6 +11,7 @@
 
     <artifactId>eureka-service</artifactId>
 
+    <description>注册中心</description>
 
     <dependencies>
 
