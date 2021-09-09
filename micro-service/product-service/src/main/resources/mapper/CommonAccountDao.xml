@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hunter.com.hunter.demo.mapper.CommonAccountDao">
+
+    <resultMap id="BaseResultMap" type="com.hunter.demo.domain.CommonAccount">
+        <!--@Table common_account-->
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="coinId" column="coin_id" jdbcType="OTHER"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="total" column="total" jdbcType="OTHER"/>
+        <result property="balance" column="balance" jdbcType="OTHER"/>
+        <result property="userFreeze" column="user_freeze" jdbcType="OTHER"/>
+        <result property="sysFreeze" column="sys_freeze" jdbcType="OTHER"/>
+        <result property="createTime" column="create_time" jdbcType="OTHER"/>
+        <result property="createBy" column="create_by" jdbcType="INTEGER"/>
+        <result property="updateTime" column="update_time" jdbcType="OTHER"/>
+        <result property="updateBy" column="update_by" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          id, user_id, coin_id, type, total, balance, user_freeze, sys_freeze, create_time, create_by, update_time, update_by
+        from db249.common_account
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          id, user_id, coin_id, type, total, balance, user_freeze, sys_freeze, create_time, create_by, update_time, update_by
+        from db249.common_account
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          id, user_id, coin_id, type, total, balance, user_freeze, sys_freeze, create_time, create_by, update_time, update_by
+        from db249.common_account
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="coinId != null">
+                and coin_id = #{coinId}
+            </if>
+            <if test="type != null and type != ''">
+                and type = #{type}
+            </if>
+            <if test="total != null">
+                and total = #{total}
+            </if>
+            <if test="balance != null">
+                and balance = #{balance}
+            </if>
+            <if test="userFreeze != null">
+                and user_freeze = #{userFreeze}
+            </if>
+            <if test="sysFreeze != null">
+                and sys_freeze = #{sysFreeze}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="createBy != null">
+                and create_by = #{createBy}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="updateBy != null">
+                and update_by = #{updateBy}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into db249.common_account(user_id, coin_id, type, total, balance, user_freeze, sys_freeze, create_time, create_by, update_time, update_by)
+        values (#{userId}, #{coinId}, #{type}, #{total}, #{balance}, #{userFreeze}, #{sysFreeze}, #{createTime}, #{createBy}, #{updateTime}, #{updateBy})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update db249.common_account
+        <set>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="coinId != null">
+                coin_id = #{coinId},
+            </if>
+            <if test="type != null and type != ''">
+                type = #{type},
+            </if>
+            <if test="total != null">
+                total = #{total},
+            </if>
+            <if test="balance != null">
+                balance = #{balance},
+            </if>
+            <if test="userFreeze != null">
+                user_freeze = #{userFreeze},
+            </if>
+            <if test="sysFreeze != null">
+                sys_freeze = #{sysFreeze},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="createBy != null">
+                create_by = #{createBy},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="updateBy != null">
+                update_by = #{updateBy},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from db249.common_account where id = #{id}
+    </delete>
+
+</mapper>

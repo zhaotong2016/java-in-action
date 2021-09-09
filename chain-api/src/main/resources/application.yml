@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: com.hunter.demo-service
+server:
+  port: ${PORT:8091}
+web3j:
+  client-address: http://localhost:8545

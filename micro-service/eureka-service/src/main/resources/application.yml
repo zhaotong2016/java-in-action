@@ -1,0 +1,18 @@
+#server:
+#  port: 8761
+
+
+spring:
+  application:
+    name: eureka-server
+  profiles:
+    active: peer1
+
+
+
+eureka:
+  client:
+#    register-with-eureka: false  #是否想自己注册到eureka-server 默认为true
+#    fetch-registry: false #是否从eureka-server获取注册信息，默认为true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
