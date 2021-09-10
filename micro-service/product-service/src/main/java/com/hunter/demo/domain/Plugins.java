@@ -9,5 +9,5 @@ import java.util.List;
 public class Plugins implements Serializable {
 
     private String name;
-    private List<PluginConfig> configList;
+    private List<PluginConfig> configs;
 }

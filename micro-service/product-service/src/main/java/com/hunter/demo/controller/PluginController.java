@@ -26,9 +26,10 @@ public class PluginController {
 
     @RequestMapping(value = "active")
     public void activePlugin(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-
         String id = req.getParameter("id");
         pluginFactory.activePlugin(id);
         resp.getWriter().append("active success");
     }
+
+
 }
