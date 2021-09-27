@@ -1,6 +1,8 @@
 package com.hunter.demo.controller;
 
 import com.hunter.demo.ResultMessage;
+import com.hunter.demo.annotaion.Desensitized;
+import com.hunter.demo.domain.CustomerBaseInfo;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,12 @@ import java.util.Map;
 @RequestMapping("fund")
 public class AccountController {
 
+    private static ThreadLocal<Boolean> threadLocal = new ThreadLocal<>();
+
+    public static ThreadLocal<Boolean> getThreadLocal() {
+        return threadLocal;
+    }
+
     /**
      * 扣除资金
      * @param userId
@@ -29,6 +37,20 @@ public class AccountController {
 
         return ResultMessage.suc();
     }
+
+    @RequestMapping(value = "testDec", method = RequestMethod.POST)
+    public ResultMessage testDec(@RequestParam("isDesensitization") boolean isDesensitization){
+
+        threadLocal.set(isDesensitization);
+        CustomerBaseInfo customerBaseInfo = new CustomerBaseInfo();
+
+        customerBaseInfo.setAccountNo("HK82345678-100");
+        customerBaseInfo.setUserName("测试转账客户");
+        customerBaseInfo.setDesensitization(isDesensitization);
+        return ResultMessage.suc(customerBaseInfo);
+    }
+
+
 
 
     public static void main(String[] args) {

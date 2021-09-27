@@ -9,7 +9,7 @@ import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.support.RootBeanDefinition;
-import org.springframework.boot.context.properties.ConfigurationBeanFactoryMetadata;
+//import org.springframework.boot.context.properties.ConfigurationBeanFactoryMetadata;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
 
@@ -20,7 +20,7 @@ public class StudentTest implements BeanFactoryPostProcessor, InitializingBean {
 
     private String name;
 
-    private ConfigurationBeanFactoryMetadata beanFactoryMetadata;
+    //private ConfigurationBeanFactoryMetadata beanFactoryMetadata;
 
     private ApplicationContext applicationContext;
 
@@ -81,10 +81,10 @@ public class StudentTest implements BeanFactoryPostProcessor, InitializingBean {
 
     private <A extends Annotation> A getAnnotation(Object bean, String beanName,
                                                    Class<A> type) {
-        A annotation = this.beanFactoryMetadata.findFactoryAnnotation(beanName, type);
-        if (annotation == null) {
-            annotation = AnnotationUtils.findAnnotation(bean.getClass(), type);
-        }
+       // A annotation = this.beanFactoryMetadata.findFactoryAnnotation(beanName, type);
+       // if (annotation == null) {
+        A annotation = AnnotationUtils.findAnnotation(bean.getClass(), type);
+        //}
         return annotation;
     }
 

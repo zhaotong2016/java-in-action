@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hk.com.easyview.bam.dao.TbStockPreOrderDao">
+
+    <resultMap id="BaseResultMap" type="hk.com.easyview.bam.entity.TbStockPreOrder">
+        <!--@Table tb_stock_pre_order-->
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="orderType" column="order_type" jdbcType="INTEGER"/>
+        <result property="preOrderNo" column="pre_order_no" jdbcType="VARCHAR"/>
+        <result property="customerKey" column="customer_key" jdbcType="INTEGER"/>
+        <result property="accountKey" column="account_key" jdbcType="INTEGER"/>
+        <result property="recommendId" column="recommend_id" jdbcType="INTEGER"/>
+        <result property="recommendToId" column="recommend_to_id" jdbcType="INTEGER"/>
+        <result property="accountName" column="account_name" jdbcType="VARCHAR"/>
+        <result property="accountNo" column="account_no" jdbcType="VARCHAR"/>
+        <result property="bankName" column="bank_name" jdbcType="VARCHAR"/>
+        <result property="stockCode" column="stock_code" jdbcType="VARCHAR"/>
+        <result property="stockIsin" column="stock_isin" jdbcType="VARCHAR"/>
+        <result property="currency" column="currency" jdbcType="VARCHAR"/>
+        <result property="market" column="market" jdbcType="VARCHAR"/>
+        <result property="stockNum" column="stock_num" jdbcType="VARCHAR"/>
+        <result property="entrustWay" column="entrust_way" jdbcType="INTEGER"/>
+        <result property="entrustType" column="entrust_type" jdbcType="INTEGER"/>
+        <result property="limitedPrice" column="limited_price" jdbcType="VARCHAR"/>
+        <result property="goodTil" column="good_til" jdbcType="OTHER"/>
+        <result property="recommendAdviceId" column="recommend_advice_id" jdbcType="INTEGER"/>
+        <result property="operateAccount" column="operate_account" jdbcType="INTEGER"/>
+        <result property="recommendStatus" column="recommend_status" jdbcType="INTEGER"/>
+        <result property="pushGroupId" column="push_group_id" jdbcType="INTEGER"/>
+        <result property="orderRemark" column="order_remark" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          id, order_type, pre_order_no, customer_key, account_key, recommend_id, recommend_to_id, account_name, account_no, bank_name, stock_code, stock_isin, currency, market, stock_num, entrust_way, entrust_type, limited_price, good_til, recommend_advice_id, operate_account, recommend_status, push_group_id, order_remark, create_time, update_time
+        from test.tb_stock_pre_order
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          id, order_type, pre_order_no, customer_key, account_key, recommend_id, recommend_to_id, account_name, account_no, bank_name, stock_code, stock_isin, currency, market, stock_num, entrust_way, entrust_type, limited_price, good_til, recommend_advice_id, operate_account, recommend_status, push_group_id, order_remark, create_time, update_time
+        from test.tb_stock_pre_order
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          id, order_type, pre_order_no, customer_key, account_key, recommend_id, recommend_to_id, account_name, account_no, bank_name, stock_code, stock_isin, currency, market, stock_num, entrust_way, entrust_type, limited_price, good_til, recommend_advice_id, operate_account, recommend_status, push_group_id, order_remark, create_time, update_time
+        from test.tb_stock_pre_order
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="orderType != null">
+                and order_type = #{orderType}
+            </if>
+            <if test="preOrderNo != null and preOrderNo != ''">
+                and pre_order_no = #{preOrderNo}
+            </if>
+            <if test="customerKey != null">
+                and customer_key = #{customerKey}
+            </if>
+            <if test="accountKey != null">
+                and account_key = #{accountKey}
+            </if>
+            <if test="recommendId != null">
+                and recommend_id = #{recommendId}
+            </if>
+            <if test="recommendToId != null">
+                and recommend_to_id = #{recommendToId}
+            </if>
+            <if test="accountName != null and accountName != ''">
+                and account_name = #{accountName}
+            </if>
+            <if test="accountNo != null and accountNo != ''">
+                and account_no = #{accountNo}
+            </if>
+            <if test="bankName != null and bankName != ''">
+                and bank_name = #{bankName}
+            </if>
+            <if test="stockCode != null and stockCode != ''">
+                and stock_code = #{stockCode}
+            </if>
+            <if test="stockIsin != null and stockIsin != ''">
+                and stock_isin = #{stockIsin}
+            </if>
+            <if test="currency != null and currency != ''">
+                and currency = #{currency}
+            </if>
+            <if test="market != null and market != ''">
+                and market = #{market}
+            </if>
+            <if test="stockNum != null and stockNum != ''">
+                and stock_num = #{stockNum}
+            </if>
+            <if test="entrustWay != null">
+                and entrust_way = #{entrustWay}
+            </if>
+            <if test="entrustType != null">
+                and entrust_type = #{entrustType}
+            </if>
+            <if test="limitedPrice != null and limitedPrice != ''">
+                and limited_price = #{limitedPrice}
+            </if>
+            <if test="goodTil != null">
+                and good_til = #{goodTil}
+            </if>
+            <if test="recommendAdviceId != null">
+                and recommend_advice_id = #{recommendAdviceId}
+            </if>
+            <if test="operateAccount != null">
+                and operate_account = #{operateAccount}
+            </if>
+            <if test="recommendStatus != null">
+                and recommend_status = #{recommendStatus}
+            </if>
+            <if test="pushGroupId != null">
+                and push_group_id = #{pushGroupId}
+            </if>
+            <if test="orderRemark != null and orderRemark != ''">
+                and order_remark = #{orderRemark}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into test.tb_stock_pre_order(order_type, pre_order_no, customer_key, account_key, recommend_id, recommend_to_id, account_name, account_no, bank_name, stock_code, stock_isin, currency, market, stock_num, entrust_way, entrust_type, limited_price, good_til, recommend_advice_id, operate_account, recommend_status, push_group_id, order_remark, create_time, update_time)
+        values (#{orderType}, #{preOrderNo}, #{customerKey}, #{accountKey}, #{recommendId}, #{recommendToId}, #{accountName}, #{accountNo}, #{bankName}, #{stockCode}, #{stockIsin}, #{currency}, #{market}, #{stockNum}, #{entrustWay}, #{entrustType}, #{limitedPrice}, #{goodTil}, #{recommendAdviceId}, #{operateAccount}, #{recommendStatus}, #{pushGroupId}, #{orderRemark}, #{createTime}, #{updateTime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update test.tb_stock_pre_order
+        <set>
+            <if test="orderType != null">
+                order_type = #{orderType},
+            </if>
+            <if test="preOrderNo != null and preOrderNo != ''">
+                pre_order_no = #{preOrderNo},
+            </if>
+            <if test="customerKey != null">
+                customer_key = #{customerKey},
+            </if>
+            <if test="accountKey != null">
+                account_key = #{accountKey},
+            </if>
+            <if test="recommendId != null">
+                recommend_id = #{recommendId},
+            </if>
+            <if test="recommendToId != null">
+                recommend_to_id = #{recommendToId},
+            </if>
+            <if test="accountName != null and accountName != ''">
+                account_name = #{accountName},
+            </if>
+            <if test="accountNo != null and accountNo != ''">
+                account_no = #{accountNo},
+            </if>
+            <if test="bankName != null and bankName != ''">
+                bank_name = #{bankName},
+            </if>
+            <if test="stockCode != null and stockCode != ''">
+                stock_code = #{stockCode},
+            </if>
+            <if test="stockIsin != null and stockIsin != ''">
+                stock_isin = #{stockIsin},
+            </if>
+            <if test="currency != null and currency != ''">
+                currency = #{currency},
+            </if>
+            <if test="market != null and market != ''">
+                market = #{market},
+            </if>
+            <if test="stockNum != null and stockNum != ''">
+                stock_num = #{stockNum},
+            </if>
+            <if test="entrustWay != null">
+                entrust_way = #{entrustWay},
+            </if>
+            <if test="entrustType != null">
+                entrust_type = #{entrustType},
+            </if>
+            <if test="limitedPrice != null and limitedPrice != ''">
+                limited_price = #{limitedPrice},
+            </if>
+            <if test="goodTil != null">
+                good_til = #{goodTil},
+            </if>
+            <if test="recommendAdviceId != null">
+                recommend_advice_id = #{recommendAdviceId},
+            </if>
+            <if test="operateAccount != null">
+                operate_account = #{operateAccount},
+            </if>
+            <if test="recommendStatus != null">
+                recommend_status = #{recommendStatus},
+            </if>
+            <if test="pushGroupId != null">
+                push_group_id = #{pushGroupId},
+            </if>
+            <if test="orderRemark != null and orderRemark != ''">
+                order_remark = #{orderRemark},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from test.tb_stock_pre_order where id = #{id}
+    </delete>
+
+</mapper>

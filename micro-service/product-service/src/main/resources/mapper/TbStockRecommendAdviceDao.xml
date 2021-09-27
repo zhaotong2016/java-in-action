@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hk.com.easyview.bam.dao.TbStockRecommendAdviceDao">
+
+    <resultMap id="BaseResultMap" type="hk.com.easyview.bam.entity.TbStockRecommendAdvice">
+        <!--@Table tb_stock_recommend_advice-->
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="stockCode" column="stock_code" jdbcType="VARCHAR"/>
+        <result property="recommendAdvice" column="recommend_advice" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          id, stock_code, recommend_advice, create_time, update_time
+        from test.tb_stock_recommend_advice
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          id, stock_code, recommend_advice, create_time, update_time
+        from test.tb_stock_recommend_advice
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          id, stock_code, recommend_advice, create_time, update_time
+        from test.tb_stock_recommend_advice
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="stockCode != null and stockCode != ''">
+                and stock_code = #{stockCode}
+            </if>
+            <if test="recommendAdvice != null and recommendAdvice != ''">
+                and recommend_advice = #{recommendAdvice}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into test.tb_stock_recommend_advice(stock_code, recommend_advice, create_time, update_time)
+        values (#{stockCode}, #{recommendAdvice}, #{createTime}, #{updateTime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update test.tb_stock_recommend_advice
+        <set>
+            <if test="stockCode != null and stockCode != ''">
+                stock_code = #{stockCode},
+            </if>
+            <if test="recommendAdvice != null and recommendAdvice != ''">
+                recommend_advice = #{recommendAdvice},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from test.tb_stock_recommend_advice where id = #{id}
+    </delete>
+
+</mapper>
