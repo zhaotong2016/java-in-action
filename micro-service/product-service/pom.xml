@@ -13,4 +13,11 @@
 
     <description>产品服务</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>${mybatis.spring.version}</version>
+        </dependency>
+    </dependencies>
 </project>

@@ -12,6 +12,10 @@ import org.springframework.core.type.AnnotationMetadata;
  *
  */
 public class MyImportBeanDefinitionRegister implements ImportBeanDefinitionRegistrar {
+
+    public static final String userMapperScanValue = "com.hunter.demo.mapper.UserMapper";
+    public static final String accountMapperScanValue = "com.hunter.demo.mapper.AccountMapper";
+
     @Override
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata,
                                         BeanDefinitionRegistry registry) {
@@ -25,7 +29,7 @@ public class MyImportBeanDefinitionRegister implements ImportBeanDefinitionRegis
 
         //构造填充
         beanDefinition.getConstructorArgumentValues()
-                .addGenericArgumentValue("com.hunter.com.hunter.demo.com.hunter.demo.mapper.UserMapper");
+                .addGenericArgumentValue(userMapperScanValue);
         registry.registerBeanDefinition("userMapper",beanDefinition);
 
 
@@ -34,8 +38,7 @@ public class MyImportBeanDefinitionRegister implements ImportBeanDefinitionRegis
 
         BeanDefinition beanDefinition2 = new RootBeanDefinition(MyMapperFactoryBean.class);
         beanDefinition2.getConstructorArgumentValues()
-                .addGenericArgumentValue("com.hunter.com.hunter.demo.com.hunter.demo.mapper.AccountMapper");
-
+                .addGenericArgumentValue(accountMapperScanValue);
         //bean注册
         registry.registerBeanDefinition("accountMapper",beanDefinition2);
 

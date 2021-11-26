@@ -3,8 +3,10 @@ package com.hunter.demo.controller;
 import com.hunter.demo.ResultMessage;
 import com.hunter.demo.annotaion.Desensitized;
 import com.hunter.demo.domain.CustomerBaseInfo;
+import com.hunter.demo.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +26,8 @@ public class AccountController {
         return threadLocal;
     }
 
+    @Autowired
+    private ProductService productService;
     /**
      * 扣除资金
      * @param userId
@@ -48,6 +52,32 @@ public class AccountController {
         customerBaseInfo.setUserName("测试转账客户");
         customerBaseInfo.setDesensitization(isDesensitization);
         return ResultMessage.suc(customerBaseInfo);
+    }
+
+    @RequestMapping(value = "query", method = RequestMethod.GET)
+    public ResultMessage query(){
+        String result = productService.query();
+        return ResultMessage.suc(result);
+    }
+
+    @RequestMapping(value = "query1", method = RequestMethod.GET)
+    public ResultMessage query1(){
+        String result = productService.query1();
+        return ResultMessage.suc(result);
+    }
+
+    @RequestMapping(value = "query2", method = RequestMethod.GET)
+    public ResultMessage query2(){
+        String result = productService.query2();
+        return ResultMessage.suc(result);
+    }
+
+
+    @RequestMapping(value = "use", method = RequestMethod.GET)
+    public ResultMessage useThreadQuery(){
+         productService.product(10);
+        productService.cosumer();
+        return ResultMessage.suc(true);
     }
 
 
@@ -93,7 +123,6 @@ public class AccountController {
             e.printStackTrace();
         }
     }
-
 
 
 

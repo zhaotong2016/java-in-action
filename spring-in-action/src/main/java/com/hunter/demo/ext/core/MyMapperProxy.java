@@ -11,7 +11,6 @@ import java.lang.reflect.Method;
 public class MyMapperProxy implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-
         System.out.println("========================" +method.getAnnotation(Select.class));
         System.out.println("========================" +method.getAnnotation(Select.class).value()[0]);
         return null;

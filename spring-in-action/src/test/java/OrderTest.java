@@ -1,7 +1,7 @@
 import com.hunter.demo.Index;
 import com.hunter.demo.bean.Order;
 import com.hunter.demo.thread.OrderService;
-import com.hunter.demo.transaction.mapper.UserMapper;
+import com.hunter.demo.mapper.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

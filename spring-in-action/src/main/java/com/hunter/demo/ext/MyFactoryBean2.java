@@ -1,7 +1,7 @@
 package com.hunter.demo.ext;
 
 import com.hunter.demo.ext.core.MyMapperProxy;
-import com.hunter.demo.transaction.mapper.UserMapper;
+import com.hunter.demo.mapper.UserMapper;
 import org.springframework.beans.factory.FactoryBean;
 
 import java.lang.reflect.Proxy;

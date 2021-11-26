@@ -1,6 +1,6 @@
 import com.hunter.demo.config.AppConfig;
 import com.hunter.demo.ext.core.MyMapperProxy;
-import com.hunter.demo.transaction.mapper.UserMapper;
+import com.hunter.demo.mapper.UserMapper;
 import org.junit.Test;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.MutablePropertyValues;

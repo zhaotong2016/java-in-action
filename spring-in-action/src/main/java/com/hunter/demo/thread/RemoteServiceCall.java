@@ -1,7 +1,7 @@
 package com.hunter.demo.thread;
 
 import com.hunter.demo.bean.Order;
-import com.hunter.demo.transaction.mapper.UserMapper;
+import com.hunter.demo.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
