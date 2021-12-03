@@ -10,6 +10,7 @@
         <module>spring-in-action</module>
         <module>easy-code</module>
         <module>micro-service</module>
+        <module>log-starter</module>
     </modules>
 
 
