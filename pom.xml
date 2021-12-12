@@ -11,6 +11,7 @@
         <module>easy-code</module>
         <module>micro-service</module>
         <module>log-starter</module>
+        <module>java-agent</module>
     </modules>
 
 

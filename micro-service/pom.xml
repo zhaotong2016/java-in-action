@@ -16,6 +16,7 @@
         <module>fund-service</module>
         <module>product-service</module>
         <module>eureka-service</module>
+        <module>order-service</module>
     </modules>
 
     <properties>

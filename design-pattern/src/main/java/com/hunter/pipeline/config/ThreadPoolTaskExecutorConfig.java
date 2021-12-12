@@ -12,6 +12,7 @@ public class ThreadPoolTaskExecutorConfig {
 
     @Bean
     public ThreadPoolTaskExecutor pipelineThreadPool(){
+        Thread
         ThreadPoolTaskExecutor threadPoolTaskExecutor  = new ThreadPoolTaskExecutor();
         threadPoolTaskExecutor.setCorePoolSize(4);// 核心线程数
         threadPoolTaskExecutor.setMaxPoolSize(8); //最大线程数
