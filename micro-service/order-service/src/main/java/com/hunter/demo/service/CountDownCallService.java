@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutionException;
  **/
 @Slf4j
 @Service
-public class Test {
+public class CountDownCallService {
 
     //并发数
     private static final int thread_num = 1000;
@@ -22,8 +22,16 @@ public class Test {
     @Autowired
     private OrderService orderService;
 
+    public void testInterface1() throws ExecutionException, InterruptedException {
+        for (int i = 0; i < thread_num; i++) {
+            final String code = "code-" + (i + 1);
+            Map<String, Object> result = orderService.queryOrderInfo(code);
+            log.info("查询结果：" +result);
+        }
 
-    public void testInterface(){
+    }
+
+    public void testInterface() throws InterruptedException {
         for (int i = 0; i < thread_num; i++) {
             final String code = "code-" + (i+1);
             Thread thread = new Thread(()->{
@@ -40,7 +48,9 @@ public class Test {
             });
 
             thread.start();
+
         }
+        countDownLatch.countDown();
     }
 
 
