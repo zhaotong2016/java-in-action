@@ -69,9 +69,9 @@ public class CodeGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName("");
-        pc.setParent("hk.com.easyview.risk.assert");
+        pc.setParent("hk.com.easyview.risk");
         pc.setEntity("pojo");
-        pc.setMapper("dao");
+        pc.setMapper("mapper");
         mpg.setPackageInfo(pc);
 
         // 自定义配置
@@ -122,7 +122,7 @@ public class CodeGenerator {
         //strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
         // 写于父类中的公共字段
         strategy.setSuperEntityColumns("id");
-        strategy.setInclude("tb_ads_isin_account_concentration","tb_ads_isin_customer_concentration");
+        strategy.setInclude("tb_exchange_rate");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);
