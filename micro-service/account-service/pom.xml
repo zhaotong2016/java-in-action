@@ -25,6 +25,14 @@
             </plugin>
         </plugins>
     </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.5.0.Beta2</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
     <!--  <dependencies>
           <dependency>
               <groupId>org.springframework.boot</groupId>
